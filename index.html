@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estacionamento</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Estacionamento</h1>
+
+    <form id="estacionamentoForm">
+        <label for="placa">Número da Placa:</label>
+        <input type="text" id="placa" name="placa" required pattern="[A-Z]{3}\d{4}">
+        <button type="button" onclick="gerarComprovante()">Gerar Comprovante</button>
+    </form>
+
+    <div id="comprovante" style="display: none;">
+        <h2>Comprovante de Estacionamento</h2>
+        <p><strong>Estacionamento:</strong> Nome do Estacionamento</p>
+        <p><strong>Endereço:</strong> Endereço do Estacionamento</p>
+        <p><strong>Placa do Carro:</strong> <span id="comprovantePlaca"></span></p>
+        <p><strong>QR Code de Pagamento:</strong></p>
+        <img id="qrCode" src="qr.png" alt="QR Code de Pagamento" media="print">
+        
+        <!-- Botão para imprimir o comprovante -->
+        <button onclick="imprimirComprovante()">Imprimir Comprovante</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
