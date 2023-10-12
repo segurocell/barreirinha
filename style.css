@@ -4,66 +4,41 @@ body {
     margin: 0;
     padding: 0;
     background-color: #f0f0f0;
-}
-
-h1, h2 {
-    text-align: center;
-}
-
-/* Estilos do formulário */
-form {
-    background-color: #ffffff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    margin: 20px auto;
-    max-width: 300px;
-}
-
-label {
-    display: block;
-    margin-bottom: 10px;
-}
-
-input[type="text"] {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-button {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    width: 100%;
+    display: flex;
+    justify-content: center; /* Centraliza horizontalmente na página */
+    align-items: center; /* Centraliza verticalmente na página */
+    height: 200mm; /* Define a altura da página de impressão para 200 mm */
 }
 
 /* Estilos do comprovante */
 #comprovante {
     background-color: #ffffff;
-    padding: 20px;
+    padding: 10px; /* Ajuste o espaçamento interno para 10px */
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    margin: 20px auto;
-    max-width: 300px;
+    width: 100mm; /* Define a largura da página de impressão para 100 mm */
+    text-align: center; /* Centraliza o texto horizontalmente */
 }
 
-/* Estilos específicos para dispositivos móveis */
-@media screen and (max-width: 480px) {
-    form, #comprovante {
-        max-width: 90%;
-    }
-    
-    h1 {
-        font-size: 24px;
-    }
+#comprovante p {
+    margin: 5px 0; /* Ajusta o espaçamento entre os parágrafos para 5px */
+}
 
-    h2 {
-        font-size: 20px;
+#qrCode {
+    max-width: 100%;
+}
+
+/* Estilos específicos para a impressão */
+@media print {
+    body * {
+        visibility: hidden;
+    }
+    #comprovante, #comprovante * {
+        visibility: visible;
+    }
+    #comprovante {
+        position: absolute;
+        left: 0;
+        top: 0;
     }
 }
