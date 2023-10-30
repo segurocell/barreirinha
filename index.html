@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservas de Viagem no Litoral</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        header {
+            background-color: #007BFF;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            width: 100%;
+        }
+        h1 {
+            font-size: 24px;
+        }
+        main {
+            padding: 20px;
+            text-align: center;
+        }
+        .centered-form {
+            width: 100%;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .gallery img {
+            margin: 10px;
+            max-width: 200px;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Reservas de Viagem no Litoral</h1>
+    </header>
+    <main>
+        <h2>Viagem para Barreirinha, ida e volta</h2>
+        <div class="gallery">
+            <img src="imagem1.jpg" alt="Destino 1" class="gallery-img">
+            <img src="imagem2.jpg" alt="Destino 2" class="gallery-img">
+            <img src="imagem3.jpg" alt="Destino 3" class="gallery-img">
+            <!-- Adicione mais imagens conforme necessário -->
+        </div>
+        <h2>Faça sua Reserva</h2>
+        <form id="reservation-form" class="centered-form">
+            <label for="nome">Nome da Pousada:</label>
+            <input type="text" id="nome" name="nome" required><br>
+
+            <label for="destino">Plano:</label>
+            <select id="destino" name="destino">
+                <option value="plano1">R$ 250,00 (mínimo 10 pessoas, ida e volta)</option>
+                <option value="plano2">R$ 150,00 (menos de 8 pessoas, ida e volta)</option>
+                <option value="plano3">R$ 100,00 (somente ida)</option>
+            </select><br>
+
+            <label for="data">Data da Viagem:</label>
+            <input type="date" id="data" name="data" required><br>
+
+            <label for="horario">Horário da Viagem:</label>
+            <input type="time" id="horario" name="horario" required><br>
+
+            <button type="button" id="submit-button">Reservar via WhatsApp</button><br>
+        </form>
+    </main>
+    <script>
+        // Função para criar e abrir o link do WhatsApp com os dados preenchidos
+        function sendWhatsAppMessage() {
+            const nome = document.getElementById("nome").value;
+            const destino = document.getElementById("destino").value;
+            const data = document.getElementById("data").value;
+            const horario = document.getElementById("horario").value;
+
+            const mensagem = `Olá! Gostaria de fazer uma reserva.%0A%0ANome da Pousada: ${nome}%0APlano: ${destino}%0AData da Viagem: ${data}%0AHorário da Viagem: ${horario}`;
+
+            const whatsappLink = `https://api.whatsapp.com/send?phone=98983094712&text=${mensagem}`;
+            window.open(whatsappLink, "_blank");
+        }
+
+        // Adicionar um evento de clique ao botão "Reservar"
+        document.getElementById("submit-button").addEventListener("click", sendWhatsAppMessage);
+    </script>
+</body>
+</html>
