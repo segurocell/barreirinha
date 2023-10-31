@@ -76,9 +76,8 @@
             <input type="time" id="horario" name="horario" required><br>
             
             <label for="telefone">Celular:</label>
-            <input type="telefone" id="telefone" name="telefone required><br>
+            <input type="text" id="telefone" name="telefone" required><br>
 
-            
             <button type="button" id="submit-button">Enviar por E-mail</button><br>
         </form>
     </main>
@@ -89,10 +88,10 @@
             const destino = document.getElementById("destino").value;
             const data = document.getElementById("data").value;
             const horario = document.getElementById("horario").value;
-            const email = document.getElementById("telefone").value;
+            const telefone = document.getElementById("telefone").value;
 
             const subject = "Reserva de Viagem para Barreirinha";
-            const body = `Olá! Gostaria de fazer uma reserva.%0A%0ANome da Pousada: ${nome}%0APlano: ${destino}%0AData da Viagem: ${data}%0AHorário da Viagem: ${horario}%0AContato: ${telefone}`;
+            const body = `Olá! Gostaria de fazer uma reserva.%0A%0ANome da Pousada: ${nome}%0APlano: ${destino}%0AData da Viagem: ${data}%0AHorário da Viagem: ${horario}%0ACelular de Contato: ${telefone}`;
 
             const mailtoLink = `mailto:barreirinhabase@gmail.com?subject=${subject}&body=${body}`;
             window.location.href = mailtoLink;
