@@ -64,37 +64,41 @@
 
             <label for="destino">Plano:</label>
             <select id="destino" name="destino">
-                <option value="plano1">R$ 200,00 (mais 10 pessoas, ida e volta)</option>
-                <option value="plano2">R$ 250,00 (menos de 10 pessoas, ida e volta)</option>
-                <option value="plano3">R$ 150,00 (somente ida)</option>
+                <option value="plano1">R$ 250,00 (mínimo 10 pessoas, ida e volta)</option>
+                <option value="plano2">R$ 150,00 (menos de 8 pessoas, ida e volta)</option>
+                <option value="plano3">R$ 100,00 (somente ida)</option>
             </select><br>
-                   *Os valores são por pessoas<br>
 
             <label for="data">Data da Viagem:</label>
             <input type="date" id="data" name="data" required><br>
 
             <label for="horario">Horário da Viagem:</label>
             <input type="time" id="horario" name="horario" required><br>
+            
+            <label for="email">Seu E-mail:</label>
+            <input type="email" id="email" name="email" required><br>
 
-            <button type="button" id="submit-button">Reservar via WhatsApp</button><br>
+            <button type="button" id="submit-button">Enviar por E-mail</button><br>
         </form>
     </main>
     <script>
-        // Função para criar e abrir o link do WhatsApp com os dados preenchidos
-        function sendWhatsAppMessage() {
+        // Função para criar e abrir o cliente de e-mail padrão com os dados preenchidos
+        function sendEmail() {
             const nome = document.getElementById("nome").value;
             const destino = document.getElementById("destino").value;
             const data = document.getElementById("data").value;
             const horario = document.getElementById("horario").value;
+            const email = document.getElementById("email").value;
 
-            const mensagem = `Olá! Gostaria de fazer uma reserva.%0A%0ANome da Pousada: ${nome}%0APlano: ${destino}%0AData da Viagem: ${data}%0AHorário da Viagem: ${horario}`;
+            const subject = "Reserva de Viagem para Barreirinha";
+            const body = `Olá! Gostaria de fazer uma reserva.%0A%0ANome da Pousada: ${nome}%0APlano: ${destino}%0AData da Viagem: ${data}%0AHorário da Viagem: ${horario}%0AE-mail de Contato: ${email}`;
 
-            const whatsappLink = `https://api.whatsapp.com/send?phone=98983094712&text=${mensagem}`;
-            window.open(whatsappLink, "_blank");
+            const mailtoLink = `mailto:barreirinhabase@gmail.com?subject=${subject}&body=${body}`;
+            window.location.href = mailtoLink;
         }
 
-        // Adicionar um evento de clique ao botão "Reservar"
-        document.getElementById("submit-button").addEventListener("click", sendWhatsAppMessage);
+        // Adicionar um evento de clique ao botão "Enviar por E-mail"
+        document.getElementById("submit-button").addEventListener("click", sendEmail);
     </script>
 </body>
 </html>
