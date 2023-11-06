@@ -52,20 +52,22 @@
     <main>
         <h2>Viagem para Barreirinha, ida e volta</h2>
         <div class="gallery">
-            <img src="imagem1.jpg" alt="Destino 1" class="gallery-img">
-            <img src="imagem2.jpg" alt="Destino 2" class="gallery-img">
-            <img src="imagem3.jpg" alt="Destino 3" class="gallery-img">
-            <!-- Adicione mais imagens conforme necessário -->
+            <img src="imagem1.jpg" alt="Destino 1">
+            <img src="imagem2.jpg" alt="Destino 2">
+            <img src="imagem3.jpg" alt="Destino 3">
+            <!-- Add more images as needed -->
         </div>
         <h2>Faça sua Reserva</h2>
         <form id="reservation-form" class="centered-form">
             <label for="nome">Nome da Pousada:</label>
             <input type="text" id="nome" name="nome" required><br>
-
-            <label for="destino">Plano:</label>
+            <label for="endereco">Endereço com Número:</label>
+            <input type="text" id="endereco" name="endereco" required><br>
+            
+            <label for="destino">Plano de Viagem:</label>
             <select id="destino" name="destino">
-                <option value="plano1">R$ 250,00 (mínimo 10 pessoas, ida e volta)</option>
-                <option value="plano2">R$ 150,00 (menos de 8 pessoas, ida e volta)</option>
+                <option value="plano1">R$ 250,00 (ida e volta para 10 pessoas ou mais)</option>
+                <option value="plano2">R$ 150,00 (ida e volta para menos de 10 pessoas)</option>
                 <option value="plano3">R$ 100,00 (somente ida)</option>
             </select><br>
 
@@ -74,30 +76,27 @@
 
             <label for="horario">Horário da Viagem:</label>
             <input type="time" id="horario" name="horario" required><br>
-            
-            <label for="telefone">Celular:</label>
-            <input type="text" id="telefone" name="telefone" required><br>
 
             <button type="button" id="submit-button">Enviar por E-mail</button><br>
         </form>
     </main>
     <script>
-        // Função para criar e abrir o cliente de e-mail padrão com os dados preenchidos
+        // Function to create and open the default email client with filled data
         function sendEmail() {
             const nome = document.getElementById("nome").value;
             const destino = document.getElementById("destino").value;
             const data = document.getElementById("data").value;
             const horario = document.getElementById("horario").value;
-            const telefone = document.getElementById("telefone").value;
+            const endereco = document.getElementById("endereco").value;
 
             const subject = "Reserva de Viagem para Barreirinha";
-            const body = `Olá! Gostaria de fazer uma reserva.%0A%0ANome da Pousada: ${nome}%0APlano: ${destino}%0AData da Viagem: ${data}%0AHorário da Viagem: ${horario}%0ACelular de Contato: ${telefone}`;
+            const body = `Olá! Gostaria de fazer uma reserva.%0A%0ANome da Pousada: ${nome}%0APlano: ${destino}%0AData da Viagem: ${data}%0AHorário da Viagem: ${horario}%0AEndereço com Número: ${endereco}`;
 
             const mailtoLink = `mailto:barreirinhabase@gmail.com?subject=${subject}&body=${body}`;
             window.location.href = mailtoLink;
         }
 
-        // Adicionar um evento de clique ao botão "Enviar por E-mail"
+        // Add a click event listener to the "Enviar por E-mail" button
         document.getElementById("submit-button").addEventListener("click", sendEmail);
     </script>
 </body>
